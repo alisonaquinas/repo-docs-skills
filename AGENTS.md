@@ -59,6 +59,13 @@ This repository follows git-flow.
 | `develop` | integration branch — day-to-day work |
 | `feature/*` | feature branches off `develop` |
 
+**`main` is the golden branch.** All merges into `main` must use merge commits
+(not squash or rebase). This preserves the full history of each release and
+makes the tag-to-commit relationship unambiguous. Never fast-forward into
+`main` and never commit directly to `main`. The release workflow tags the
+merge commit on `main`; squash or rebase merges break the CHANGELOG extraction
+and the version-tag invariant.
+
 ## Invariants — Do Not Violate
 
 - Every `.md` file in `docs/` (except `research/` and `raw/`) must have YAML
