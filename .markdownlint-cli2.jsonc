@@ -1,0 +1,30 @@
+{
+    // docs/** is linted separately via docs/.obsidian-linter.jsonc (OFM-aware).
+    // Everything outside docs/ uses vanilla markdownlint here.
+    "ignores": [
+        "docs/**",
+        "built/**",
+        ".venv",
+        ".pytest_cache",
+        "node_modules",
+        ".git"
+    ],
+    "config": {
+        "default": true,
+        "line-length": false,
+        "no-trailing-punctuation": false,
+        "no-inline-html": false,
+        "table-column-style": false,
+        "no-duplicate-heading": false,
+        // Makefile recipe examples require hard tabs inside code blocks
+        "no-hard-tabs": { "code_blocks": false }
+    },
+    "overrides": [
+        {
+            "files": ["CHANGELOG.md"],
+            "config": {
+                "MD024": false
+            }
+        }
+    ]
+}
