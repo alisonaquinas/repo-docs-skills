@@ -1,0 +1,4 @@
+interface:
+  display_name: "Obsidian CLI"
+  short_description: "Control Obsidian desktop app from terminal"
+  default_prompt: "Use $obsidian-cli to automate Obsidian: create notes, run daily note workflows, query vaults, reload plugins, or take screenshots."

@@ -1,0 +1,8 @@
+{
+  "name": "repo-docs-skills",
+  "version": "0.1.0",
+  "description": "Cross-compatible LLM skills for software project documentation workflows: obsidian-cli automation and documentation maintenance patterns.",
+  "author": {
+    "name": "Alison Aquinas"
+  }
+}

@@ -1,0 +1,21 @@
+extends: default
+
+rules:
+  # Long default_prompt values and Actions expressions push past 80 chars
+  line-length:
+    max: 200
+    level: warning
+
+  # Agent YAMLs and many CI configs omit the leading ---
+  document-start: disable
+
+  # GitHub Actions uses `on:` as a mapping key; flagging it as a boolean
+  # key would produce false positives across every workflow file
+  truthy:
+    allowed-values: ["true", "false"]
+    check-keys: false
+
+
+ignore: |
+  .git/
+  node_modules/

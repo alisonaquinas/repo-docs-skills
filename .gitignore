@@ -1,0 +1,5 @@
+built/
+.tmp-test-artifacts/
+tmp*/
+__pycache__/
+*.pyc
