@@ -32,7 +32,7 @@ obsidian version
 | `files` | `path=`, `total` | List files in folder |
 | `folder` | `path=` | Show info about a folder |
 | `folders` | `path=` | List folders |
-| `open` | `file=\|path=`, `newtab`, `paneType=` | Open file in Obsidian |
+| `open` | `file=\|path=`, `newtab`, `paneType=` | Open file in Obsidian; `paneType=` values vary by version — run `obsidian help open` to list accepted values |
 | `create` | `file=\|path=`, `content=`, `overwrite`, `open` | Create a new file; `overwrite` flag silently replaces existing file |
 | `read` | `file=\|path=`, `inline` | Read file contents to stdout |
 | `append` | `file=\|path=`, `content=` | Append content to file |
@@ -160,7 +160,7 @@ obsidian help history
 | `dev:console` | `level=`, `limit=` | DevTools console output |
 | `dev:css` | `selector=`, `prop=` | Inspect computed CSS |
 | `dev:dom` | `selector=`, `text` | Inspect DOM element |
-| `plugin:reload` | `id=` | Reload a plugin by ID |
+| `plugin:reload` | `id=` | Reload a plugin by ID; the ID is the `id` field in the plugin's `manifest.json` and matches its folder name under `.obsidian/plugins/` |
 | `eval` | `code=` | Evaluate JavaScript in app context |
 
 ```bash

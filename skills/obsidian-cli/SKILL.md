@@ -43,6 +43,7 @@ obsidian [vault="<name>"] <command> [param=value ...] [--flag]
 - `--copy` sends output to clipboard; `--help` shows help for a command
 - Newlines in `content=` are encoded as `\n`
 - **Exit codes are unreliable** — validate stdout/stderr content, not just exit status
+- **Requires the GUI app running** — cron jobs and headless CI environments will silently fail unless Obsidian is already open with a display; use `obsidian-headless` for server contexts
 
 ### 7 command families
 

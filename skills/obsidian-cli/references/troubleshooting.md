@@ -49,6 +49,7 @@ When the CLI fails or behaves unexpectedly, apply in order:
 | **External-write race** | `property:set` no-op after writing file outside Obsidian | Write through CLI or insert a sync/wait step |
 | **Frontmatter bootstrapping** | `create` + `append` leaves frontmatter on line 2, breaking YAML parse | Use `template:insert`; or discover property commands via `obsidian help \| grep property` |
 | **Packaging/sandbox** | Scoop shim, old Homebrew install, or Flatpak breaks discovery | Use official installer |
+| **Cron / headless environment** | CLI silently fails — Obsidian does not launch or is unreachable | The CLI requires the GUI app to be running and a display server present; verify Obsidian is already open before the job runs, or use `obsidian-headless` for server contexts |
 | **Agent shell sandbox** | Some agent environments (e.g., Codex Desktop on macOS) launch a second crashing instance | Test from a normal terminal first; file bug with agent vendor |
 | **Stale early-release examples** | Pre-1.12.7 examples use wrong parameter names | Run `obsidian help <command>` on installed version |
 
