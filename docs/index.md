@@ -47,10 +47,15 @@ The wiki describes what exists in the sources. It does not replace them.
 | `superpowers/plans/` | _(no content yet)_ |
 | `research/` | Raw research — see directory for files |
 
+## Skills
+
+| Skill | Description |
+|---|---|
+| `skills/obsidian-cli/` | Full control surface for the official `obsidian` CLI (requires Obsidian 1.12.7+) |
+
 ## Project Status
 
-**Scaffolding phase.** No skill files exist yet. The wiki skeleton is being
-established before any plugin content is authored.
+**Phase 2 — Core Skills.** First skill (obsidian-cli) authored. Plugin infrastructure scaffolding in progress.
 
 > [!NOTE]
 > All wikilinks use `[[target]]` syntax relative to `docs/`. If a linked

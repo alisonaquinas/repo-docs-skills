@@ -20,3 +20,12 @@ One entry per session. Never edit past entries.
 - Created placeholder directories: `raw/`, `adr/`, `plans/`, `superpowers/plans/`
 - Design spec at `superpowers/specs/2026-04-17-skeleton-design.md`
 - Implementation plan at `superpowers/plans/2026-04-17-skeleton.md`
+
+## 2026-04-17 — obsidian-cli skill authored
+
+- Created `skills/obsidian-cli/SKILL.md` — full obsidian CLI control surface skill
+- Created `skills/obsidian-cli/agents/openai.yaml` — OpenAI agent metadata
+- Created `skills/obsidian-cli/references/command-reference.md` — all 7 command families with parameters and examples
+- Created `skills/obsidian-cli/references/syntax-rules.md` — 8 cross-cutting syntax rules for automation correctness
+- Created `skills/obsidian-cli/references/troubleshooting.md` — issue classes, platform setup, Desktop CLI vs Headless distinction
+- Updated `docs/index.md` navigation table to reflect skill availability
