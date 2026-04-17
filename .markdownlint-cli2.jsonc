@@ -1,0 +1,9 @@
+{
+  // Lint vanilla markdown files outside docs/.
+  // docs/** uses markdownlint-obsidian (OFM-aware) via docs/.obsidian-linter.jsonc.
+  "globs": ["**/*.md", "!docs/**", "!.github/**"],
+  "config": {
+    "default": true,
+    "MD013": false
+  }
+}
