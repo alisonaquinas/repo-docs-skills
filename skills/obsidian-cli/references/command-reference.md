@@ -33,7 +33,7 @@ obsidian version
 | `folder` | `path=` | Show info about a folder |
 | `folders` | `path=` | List folders |
 | `open` | `file=\|path=`, `newtab`, `paneType=` | Open file in Obsidian; `paneType=` values vary by version — run `obsidian help open` to list accepted values |
-| `create` | `file=\|path=`, `content=`, `overwrite`, `open` | Create a new file; `overwrite` flag silently replaces existing file |
+| `create` | `file=\|path=`, `content=`, `overwrite`, `open` | Create a new file; `overwrite` flag silently replaces existing file; **do not follow with `append` to add YAML frontmatter** — `create` + `append` leaves frontmatter on line 2, breaking YAML parse; use `template:insert` instead |
 | `read` | `file=\|path=`, `inline` | Read file contents to stdout |
 | `append` | `file=\|path=`, `content=` | Append content to file |
 | `prepend` | `file=\|path=`, `content=` | Prepend content to file |
@@ -64,7 +64,7 @@ fi
 |---|---|---|
 | `search` | `query=`, `path=`, `format=` | Full-text search; format=json\|csv\|tsv\|md\|paths |
 | `search:context` | `query=`, `path=` | Search with surrounding context lines |
-| `tags` | `counts`, `verbose` | List all tags in vault |
+| `tags` | `counts`, `verbose` | List all tags in vault; `counts` adds usage frequency per tag; `verbose` adds per-tag file detail |
 | `tag` | `query=`, `path=` | Files matching a tag (structured format output not confirmed; use `search query="#tag" format=json` for JSON output) |
 | `tasks` | `daily`, `todo`, `done`, `status=`, `verbose`, `total` | Inspect tasks across vault |
 | `task` | `file=\|path=`, `todo`, `done`, `status=` | Tasks in a specific file |
