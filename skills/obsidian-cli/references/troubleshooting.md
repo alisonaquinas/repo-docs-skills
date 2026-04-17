@@ -20,6 +20,7 @@ When the CLI fails or behaves unexpectedly, apply in order:
 
 - Creates a symlink at `/usr/local/bin/obsidian` → bundled CLI binary
 - Requires administrator approval via system dialog on first registration
+- **"Unable to find helper app" error:** disable and re-enable the CLI in Settings → General → CLI (the toggle re-registers the helper binary), then approve in the macOS system dialog
 - Check for stale PATH entries: `grep -n obsidian ~/.zprofile ~/.zshrc ~/.bash_profile 2>/dev/null`
 - Remove stale lines if the app re-registered to a different location
 
@@ -46,7 +47,7 @@ When the CLI fails or behaves unexpectedly, apply in order:
 | **Exit-code unreliability** | `set -e` doesn't catch failures | Validate stdout/stderr content semantically |
 | **Quoting/control chars** | `content=` with single quotes or LaTeX silently corrupts | Use templates or write file directly |
 | **External-write race** | `property:set` no-op after writing file outside Obsidian | Write through CLI or insert a sync/wait step |
-| **Frontmatter bootstrapping** | `create` + `append` leaves frontmatter on line 2, breaking YAML parse | Use `template:insert` or dedicated property commands |
+| **Frontmatter bootstrapping** | `create` + `append` leaves frontmatter on line 2, breaking YAML parse | Use `template:insert`; or discover property commands via `obsidian help \| grep property` |
 | **Packaging/sandbox** | Scoop shim, old Homebrew install, or Flatpak breaks discovery | Use official installer |
 | **Agent shell sandbox** | Some agent environments (e.g., Codex Desktop on macOS) launch a second crashing instance | Test from a normal terminal first; file bug with agent vendor |
 | **Stale early-release examples** | Pre-1.12.7 examples use wrong parameter names | Run `obsidian help <command>` on installed version |

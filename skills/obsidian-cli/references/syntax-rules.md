@@ -45,6 +45,20 @@ Exception: `--copy` and `--help` are documented `--flag` style. Since 1.12.2, un
 
 Prefer `path=` in automation. `file=` on a non-unique name may resolve to the wrong file without error.
 
+**Important: `path=` has different semantics in search commands.**
+In file/folder commands (`read`, `create`, `append`, etc.), `path=` is an exact file path.
+In `search`, `search:context`, and `tag`, `path=` is a **folder scope filter** — it restricts results
+to files under that folder, not a file path:
+
+```bash
+# path= as exact file path (file command)
+obsidian vault="Notes" read path="Projects/kickoff.md"
+
+# path= as folder scope filter (search command)
+obsidian vault="Notes" search query="status::active" path="Projects"
+# → searches only inside the Projects/ folder
+```
+
 ---
 
 ## Rule 4: Exit Codes Are Not Reliable
