@@ -25,7 +25,9 @@ Report.md`. Everything else must be scaffolded.
    the `flavor-grenade-lsp` / `obsidian-linter` conventions used across this superproject.
 3. Wire up vanilla markdownlint for everything outside `docs/` and OFM-aware linting
    inside `docs/`.
-4. Open the `docs/` tree as an Obsidian vault via `.obsidian/` config.
+4. Open the repository root as an Obsidian vault via `.obsidian/` at the repo root
+   (matching the `obsidian-linter` pattern). OFM linting remains scoped to `docs/**`
+   only; the vault boundary and the linting boundary are intentionally different.
 
 ---
 
@@ -45,7 +47,7 @@ repo-docs-skills/
 ├── AGENTS.md                        # root LLM guidance: layout, invariants, workflows
 ├── CLAUDE.md                        # stub → AGENTS.md
 ├── .markdownlint-cli2.jsonc         # vanilla markdownlint; ignores docs/**
-├── .obsidian/                       # vault config so docs tree opens in Obsidian
+├── .obsidian/                       # vault root = repo root (matches obsidian-linter pattern)
 │   ├── app.json
 │   ├── appearance.json
 │   └── core-plugins.json
@@ -62,8 +64,9 @@ repo-docs-skills/
     │   └── .gitkeep
     ├── plans/                       # phase-by-phase implementation plans
     │   └── .gitkeep
-    └── superpowers/
-        ├── specs/                   # brainstorm / design docs (this file lives here)
+    └── superpowers/                 # design specs and implementation plans
+        ├── specs/                   # brainstorm / design docs
+        │   └── 2026-04-17-skeleton-design.md   # this file; bootstraps the directory
         └── plans/                   # writing-plans output
             └── .gitkeep
 ```
@@ -90,11 +93,15 @@ linting regimes do not overlap.
 
 ### OFM conventions (docs/ only)
 
-Every file under `docs/` (excluding `docs/raw/` and `docs/research/`) must:
+Every `.md` file under `docs/` (excluding `docs/raw/` and `docs/research/`) must:
 
 - Begin with YAML frontmatter containing `title`, `tags`, and `aliases`.
+  This includes `docs/AGENTS.md` and `docs/log.md` (matching the `flavor-grenade-lsp`
+  pattern where `docs/AGENTS.md` carries frontmatter).
 - Use `[[wikilink]]` syntax for all internal cross-references (no relative Markdown links).
-- Use tag prefix conventions matching the directory name (e.g., `adr`, `plans`, `meta`).
+- Use tag prefix conventions matching the directory name (e.g., `adr`, `plans`).
+  Files living directly in `docs/` root (`index.md`, `roadmap.md`, `log.md`,
+  `AGENTS.md`) use the `meta` prefix — matching the `flavor-grenade-lsp` convention.
 
 ### log.md
 
@@ -128,11 +135,30 @@ requirements, wikilink format rules, tag prefix conventions, immutability of
 ## Implementation Sequence
 
 1. Create root files: `README.md`, `AGENTS.md`, `CLAUDE.md`, `.markdownlint-cli2.jsonc`
+   (see AGENTS.md Content Summary section for required content of `AGENTS.md`)
 2. Create `.obsidian/` vault config files
-3. Create `docs/AGENTS.md`
+3. Create `docs/AGENTS.md` (see AGENTS.md Content Summary section for required content)
 4. Create `docs/index.md` (OFM, with frontmatter + navigation table)
 5. Create `docs/roadmap.md` (OFM stub)
 6. Create `docs/log.md` (OFM, first entry for this scaffolding session)
-7. Create `docs/.obsidian-linter.jsonc`
-8. Create placeholder `.gitkeep` files for `raw/`, `adr/`, `plans/`, `superpowers/plans/`
+7. Create `docs/.obsidian-linter.jsonc`. Minimum required content: enable the
+   `markdownlint-obsidian` ruleset and scope it to `docs/**/*.md`. At minimum:
+   `{ "globs": ["**/*.md"], "customRules": [], "config": { "default": true } }`
+   (exact schema follows the `obsidian-linter` package's config format).
+   Note: globs are resolved relative to the config file's location, so `"**/*.md"` from
+   `docs/.obsidian-linter.jsonc` already scopes to `docs/**` — do not write
+   `"docs/**/*.md"` (absolute-style) as that will match nothing.
+8. Create placeholder `.gitkeep` files for `raw/`, `adr/`, `plans/`, `superpowers/plans/`.
+   Leave `docs/research/` untouched — it already contains the Obsidian CLI Deep Research
+   Report and OFM frontmatter rules do not apply to it.
+   Note: `superpowers/specs/` is already non-empty (bootstrapped by this spec file)
+   and does not need a `.gitkeep`.
 9. Commit all scaffolding on `develop`
+
+### Navigation table behaviour (Step 4)
+
+`docs/index.md` must include a navigation table covering all dirs and top-level files.
+For directories that contain only `.gitkeep` at scaffold time, list them with a
+`_(no content yet)_` annotation rather than omitting them. This keeps the table
+accurate and signals intentional placeholders.
+
