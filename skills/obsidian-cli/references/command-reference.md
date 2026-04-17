@@ -41,6 +41,7 @@ obsidian version
 | `rename` | `file=\|path=`, `name=` | Rename; `name=` is the new filename stem only (no path) |
 
 **`file=` vs `path=`:**
+
 - `file=` uses Obsidian name resolution (searches vault index; ambiguous if duplicate names exist)
 - `path=` requires exact vault-root-relative path (preferred in scripts for determinism)
 

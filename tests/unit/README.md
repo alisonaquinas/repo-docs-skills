@@ -29,4 +29,4 @@ Each entry will follow this format:
 
 ## Running Tests
 
-*(Instructions added once a test runner is wired up.)*
+Instructions added once a test runner is wired up.
