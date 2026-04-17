@@ -1,0 +1,22 @@
+{
+  // OFM-aware linting for docs/.
+  //
+  // vaultRoot "./" resolves to docs/ (the config file's directory), so all
+  // wikilinks written relative to docs/ (e.g. [[plans/phase-01]]) resolve
+  // cleanly via the exact-match strategy.
+  //
+  // Globs are relative to this config file, so "**/*.md" already scopes to
+  // docs/**. Do NOT write "docs/**/*.md" here — it would match nothing.
+  //
+  // superpowers/** is ignored because plan and spec files use tight code-fence
+  // formatting that trips MD031/MD032 by design.
+  "vaultRoot": "./",
+  "resolve": true,
+  "globs": ["**/*.md"],
+  "ignores": ["superpowers/**", "research/**", "raw/**"],
+  "rules": {
+    "MD031": { "enabled": false },
+    "MD032": { "enabled": false },
+    "MD040": { "enabled": false }
+  }
+}
